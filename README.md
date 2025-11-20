@@ -951,5 +951,4 @@ For questions about this POC or collaboration opportunities:
 - Email: mail4volk@gmail.com
 
 ---
-#   B B G - P O C  
- 
+#
