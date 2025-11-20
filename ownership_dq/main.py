@@ -33,6 +33,7 @@ from .hybrid_detector import HybridAnomalyDetector
 from .active_learning import ActiveLearningLoop
 from .dq_profiler import DataQualityProfiler
 from .comprehensive_metrics import ComprehensiveMetrics
+from .visualizations import DQVisualizer
 
 
 class OwnershipDQPipeline:
@@ -42,10 +43,12 @@ class OwnershipDQPipeline:
         self.output_dir = output_dir
         self.data_dir = f"{output_dir}/data"
         self.reports_dir = f"{output_dir}/reports"
+        self.viz_dir = f"{output_dir}/visualizations"
         
         # Ensure directories exist
         os.makedirs(self.data_dir, exist_ok=True)
         os.makedirs(self.reports_dir, exist_ok=True)
+        os.makedirs(self.viz_dir, exist_ok=True)
         
         # Initialize components
         self.generator = OwnershipDataGenerator(seed=42)
@@ -55,6 +58,7 @@ class OwnershipDQPipeline:
         self.active_learning = ActiveLearningLoop()
         self.dq_profiler = DataQualityProfiler()
         self.comprehensive_metrics = ComprehensiveMetrics()  # NEW: Production-grade profiling
+        self.visualizer = DQVisualizer(output_dir=self.viz_dir)  # NEW: Visualization generation
         
         self.df = None
         self.assessment_results = {}
@@ -253,6 +257,11 @@ class OwnershipDQPipeline:
         with open(html_path, 'w', encoding='utf-8') as f:
             f.write(html_report)
         print(f"   💾 HTML report saved: {html_path}")
+        
+        # STEP 8: Generate Visualizations
+        print("\n   📊 Generating static visualizations...")
+        self.visualizer.generate_all_visualizations(self.df, dq_profile)
+        print(f"   ✅ Visualizations saved to: {self.viz_dir}")
         
         self.assessment_results = report
         
