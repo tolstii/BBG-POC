@@ -1,0 +1,55 @@
+{
+  "total_records": 402,
+  "date_range": {
+    "start": "2023-06-30",
+    "end": "2024-09-30",
+    "quarters": 6
+  },
+  "holders": {
+    "unique_canonical": 11,
+    "unique_names": 35,
+    "types": {
+      "Investment Advisor": 288,
+      "Holding Company": 48,
+      "Activist Investor": 48,
+      "Insider": 18
+    }
+  },
+  "securities": {
+    "unique": 8,
+    "market_caps": {
+      "count": 8.0,
+      "mean": 5638750000.0,
+      "std": 5390423883.411874,
+      "min": 50000000.0,
+      "25%": 1950000000.0,
+      "50%": 4475000000.0,
+      "75%": 8147500000.0,
+      "max": 15700000000.0
+    }
+  },
+  "anomalies": {
+    "total": 104,
+    "percentage": 25.870646766169152,
+    "by_type": {
+      "FALSE_POSITIVE_smallcap": 30,
+      "ANOMALY_statistical_outlier": 24,
+      "OUTLIER_founder_ownership": 18,
+      "FALSE_POSITIVE_q4_rebalancing": 15,
+      "FALSE_POSITIVE_activist": 6,
+      "ANOMALY_impossible_value": 5,
+      "FALSE_NEGATIVE_gradual_drift": 4,
+      "ANOMALY_sudden_drop": 1,
+      "FALSE_NEGATIVE_copy_paste": 1
+    }
+  },
+  "ownership_stats": {
+    "mean": 12.192056263234894,
+    "median": 6.98,
+    "std": 21.9930753929952,
+    "min": 1.59,
+    "max": 148.72747052051506,
+    "skewness": 4.702017750457984,
+    "kurtosis": 22.068611324249712
+  }
+}
